@@ -4,7 +4,8 @@ from threading import *
 HOST = "127.0.0.1"  # The server's hostname or IP address on localhost
 PORT = 33500  # The port used by the server
 
-def SendToServer(nodeList):
+#sending to the server node list of EV
+def SendToServer(nodeList): 
     with socket(AF_INET, SOCK_STREAM) as s:
         s.connect((HOST, PORT))
         s.sendall(nodeList)
@@ -12,6 +13,7 @@ def SendToServer(nodeList):
 
     print(f"Received {data!r}")
 
+#receiving node list of EV and eta of the EV which is communicating with the RSU
 def Receiving(sock):
     while True:
         # decode data and use c.py to send it
